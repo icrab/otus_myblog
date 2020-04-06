@@ -1,0 +1,31 @@
+div {
+    background-color: #fff!important;
+}
+span {
+    display: block;
+}
+.subtitle {
+    display: flex;
+    justify-content: center;
+}
+.subtitle > span {
+    margin: auto 2px;
+}
+.no-margin {
+    margin: 0;
+}
+.default-margin-all {
+    margin: 0.5rem auto;
+}
+.default-margin-bot {
+    margin-bottom: 0.5rem;
+}
+.background-image {
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 90vw;
+    }
+}
