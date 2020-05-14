@@ -46,6 +46,6 @@ class Comment(Base):
     tea = relationship('Tea', back_populates='comment')
 
     def __repr__(self):
-        return f'<Comment: #{self.id}, user {self.user.name} about {self.tea.name}:{self.text} {self.datetime}>'
+        return f'<Comment: #{self.id}, about {self.tea.name}:{self.text} {self.datetime}>'
 
 
