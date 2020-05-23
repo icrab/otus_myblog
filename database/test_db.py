@@ -1,5 +1,5 @@
 import pytest
-from models import User, Tea, Comment, Session
+from models_import import User, Tea, Comment, Session
 from requests import FAILED_USER_REMOVE, remove_user
 from db_fill import add_tea, fill_teas, fill_users, fill_comments, INVALID_ARGS_TYPE_TEXT
 

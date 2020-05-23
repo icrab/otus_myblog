@@ -1,4 +1,4 @@
-from models import Session, Tea, User
+from models_import import Session, Tea, User
 import sqlalchemy.exc
 
 

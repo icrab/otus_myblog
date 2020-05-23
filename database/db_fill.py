@@ -1,4 +1,4 @@
-from models import Session, Tea, Comment, User, Base, engine
+from models_import import Session, Tea, Comment, User, Base, engine
 import sqlalchemy.exc
 
 INVALID_ARGS_TYPE_TEXT = 'all args have to be str'
@@ -25,8 +25,8 @@ def add_tea(name, grade, region, text):
     try_session_commit()
 
 
-def add_user(name, mail):
-    user = User(name=name, mail=mail, password='12345')
+def add_user(username, mail):
+    user = User(username=username, email=mail, password='12345')
     Session.add(user)
     try_session_commit()
 
@@ -80,10 +80,10 @@ def fill_teas():
 
 def fill_users():
     if not check_exist(User):
-        name, mail = 'samplename', 'samplemail@web.com'
-        add_user(name, mail)
-        name, mail = 'samplename_2', 'samplemail_2@web.com'
-        add_user(name, mail)
+        username, mail = 'samplename', 'samplemail@web.com'
+        add_user(username, mail)
+        username, mail = 'samplename_2', 'samplemail_2@web.com'
+        add_user(username, mail)
 
 
 def fill_comments():

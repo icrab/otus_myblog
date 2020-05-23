@@ -19,6 +19,10 @@ span {
     flex-basis: auto;
     width: 100%;
 }
+.posts {
+    flex-direction: row;
+    align-items: stretch;
+}
 .container {
     max-width: 90vw;
 }
@@ -47,6 +51,9 @@ span {
     background-repeat: no-repeat;
 }
 @media (min-width: 576px) {
+    .posts > .col{
+        max-width: 50%;
+    }
 }
 @media (min-width: 768px) {
     .row {
@@ -56,8 +63,18 @@ span {
         margin: 10px;
         max-width: 400px;
     }
+    .posts {
+        flex-direction: row;
+        align-items: stretch;
+    }
+    .posts > .col{
+        max-width: 33.3%;
+    }
 }
 @media (min-width: 992px) {
+    .posts > .col{
+        max-width: 25%;
+    }
 }
 @media (min-width: 1200px) {
 }

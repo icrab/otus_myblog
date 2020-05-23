@@ -1,3 +1,0 @@
-install requirements
-run db_fill.py to fill database
-run requests.py to see query samples

@@ -1,7 +1,9 @@
 import datetime
+import hashlib
 from sqlalchemy.orm import sessionmaker, scoped_session, relationship
 from sqlalchemy import Column, Integer, String, Text, \
                        ForeignKey, DateTime
+from flask_login import UserMixin
 from .engine import engine
 from .base import Base
 
@@ -24,13 +26,30 @@ class Tea(Base):
         return f'<Tea: #{self.id} {self.name}: {self.grade}, {self.region}>'
 
 
-class User(Base):
-    name = Column(String, nullable=False)
-    mail = Column(String, nullable=False)
-    password = Column(String, nullable=False)
+class User(Base, UserMixin):
+    name = Column(String, unique=True, nullable=False)
+    mail = Column(String, unique=True, nullable=False)
+    _password = Column('password', String, nullable=False)
     registration_time = Column(DateTime, default=datetime.datetime.utcnow)
 
     comment = relationship('Comment', back_populates='user')
+
+    def __init__(self, username, password, email):
+        self.name = username
+        self.password = password
+        self.mail = email
+
+    @property
+    def password(self):
+        return self._password
+
+    @password.setter
+    def password(self, value):
+        self._password = self.hash_password(value)
+
+    @classmethod
+    def hash_password(cls, value: str) -> str:
+        return hashlib.md5(value.encode('utf-8')).hexdigest()
 
     def __repr__(self):
         return f'{self.name}'
